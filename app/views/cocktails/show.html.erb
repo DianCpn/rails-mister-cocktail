@@ -1,19 +1,26 @@
-<h1><%= @cocktail.name %></h1>
-<br>
-<ul>
-  <% @cocktail.doses.each do |dose| %>
-  <li>
-    <%= dose.description %>
-    <%= dose.ingredient.name %>
-    <<%= link_to dose_path(dose),
-      method: :delete,
-      data: { confirm: "Are you sure?" } do %>
-      <i class="far fa-trash-alt"></i>
+<div class="card-product my-5">
+   <%= image_tag "https://images.unsplash.com/photo-1541546006121-5c3bc5e8c7b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1947&q=80", alt: "pisco sour" %>
+  <div class="card-product-infos">
+  <h2><%= @cocktail.name %></h2>
+    <ul>
+      <% @cocktail.doses.each do |dose| %>
+      <li>
+        <%= dose.description %>
+        <%= dose.ingredient.name %>
+        <<%= link_to dose_path(dose),
+          method: :delete,
+          data: { confirm: "Are you sure?" } do %>
+          <i class="far fa-trash-alt"></i>
+          <% end %>
+      </li>
       <% end %>
-  </li>
-  <% end %>
-</ul>
-
+    </ul>
+  </div>
+</div>
 <p><%= link_to "Create your doses", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary' %></p>
 <br>
 <p><%= link_to "Back to your cocktails", cocktails_path, class: 'btn btn-primary' %></p>
+
+
+
+
