@@ -1,26 +1,32 @@
-<div class="card-product my-5">
-   <%= image_tag "https://images.unsplash.com/photo-1541546006121-5c3bc5e8c7b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1947&q=80", alt: "pisco sour" %>
-  <div class="card-product-infos">
-  <h2><%= @cocktail.name %></h2>
-    <ul>
-      <% @cocktail.doses.each do |dose| %>
-      <li>
-        <%= dose.description %>
-        <%= dose.ingredient.name %>
-        <<%= link_to dose_path(dose),
-          method: :delete,
-          data: { confirm: "Are you sure?" } do %>
-          <i class="far fa-trash-alt"></i>
-          <% end %>
-      </li>
+<div class="container">
+  <br>
+  <h1><%= @cocktail.name %></h1>
+  <%= link_to "Back to all cocktails", root_path %>
+  <br>
+  <br>
+  <div class="col-sm-12 col-m-6">
+    <h3>Recipe</h3>
+    <table class="table table-bordered">
+      <tbody>
+        <thead>
+          <th>Ingredient</th>
+          <th>Description</th>
+          <th>Action</th>
+        </thead>
+          <% @cocktail.doses.each do |dose| %>
+        <tr>
+          <td><%= dose.description %></td>
+          <td><%= dose.ingredient.name %></td>
+          <td>
+            <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fa fa-trash destroy_dose"></i>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
       <% end %>
-    </ul>
+    </table>
   </div>
-</div>
-<p><%= link_to "Create your doses", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary' %></p>
-<br>
-<p><%= link_to "Back to your cocktails", root_path, class: 'btn btn-primary' %></p>
-
-
-
-
+  <div class="col-sm-12 col-md-6">
+    <%= link_to "Create your doses", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary' %>
+  </div>

@@ -1,0 +1,31 @@
+.banner {
+  color: white;
+  text-align: center;
+  height: 400px;
+  background-size: cover !important;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+
+  h1 {
+    margin: 0;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  p {
+    font-size: 25px;
+    font-weight: lighter;
+    color: white;
+    opacity: 0.6;
+    margin-bottom: 30px;
+  }
+
+  .container {
+    display: list-item;
+  }
+}
